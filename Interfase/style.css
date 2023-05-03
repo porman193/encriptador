@@ -20,9 +20,9 @@ body{
 }
 
 .in-flex:first-child{
-    flex: 2 ;
+    flex: 2;
+    
 }
-
 .in-flex div{
     padding: 10px;
     background-color: white;
@@ -48,7 +48,33 @@ body{
     align-items: center;
 }
 
+
 input[type="text"]{
     width: 100%;
-    height: 40vh;
+    height: 60vh;
+}
+
+.encripter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.buttons button{
+    margin: 10px;
+}
+
+.rigth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95%;
+}
+
+.result{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
