@@ -17,8 +17,6 @@ btnEncriptar.addEventListener('click', () => {
 function encriptar(textoAEncriptar) {
     let textoEncriptado = '';
     for (let i = 0; i < textoAEncriptar.length; i++) {
-        textoEncriptado += textoAEncriptar.charCodeAt(i).toString(2) + ' '; // convierte el texto a binario
-        textoEncriptado += String.fromCharCode(parseInt(textoEncriptado[i], 2).toString(10)); // convierte el texto binario a decimal
         textoEncriptado += String.fromCharCode(textoAEncriptar.charCodeAt(i)+1); // suma 1 al codigo ascii del caracter y lo convierte a caracter
     }
     console.log(textoEncriptado);
