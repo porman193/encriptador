@@ -8,10 +8,24 @@ const btnCopiar = document.getElementById('btn-copiar');
 // guardar el texto dado por el usuario en una variable global
 let textoAEncriptar = textoParaEncriptar.value;
 
+//funcionalidad del boton encriptar donde se llama a la funcion encriptar y muestra el resultado en el output de la pagina html
 btnEncriptar.addEventListener('click', () => {
     let texto = textoParaEncriptar.value;
     resultado.textContent = encriptar(texto);
 });
+
+//funcionalidad del boton desencriptar donde se llama a la funcion desencriptar y muestra el resultado en el output de la pagina html
+btnDesencriptar.addEventListener('click', () => {
+    let texto = textoParaEncriptar.value;
+    mostrarDesencriptado(texto);
+});
+
+//funcionalidad del boton copiar donde se copia el texto desencriptado al portapapeles
+btnCopiar.addEventListener('click', () => {
+    let texto = resultado.textContent;
+    copiarAlPortapapeles(texto);
+});
+
 
 // Funcion que encripta eñ texto dado por el usuario
 function encriptar(textoAEncriptar) {
@@ -27,22 +41,18 @@ function encriptar(textoAEncriptar) {
 function desencriptar(textoADesencriptar) {
     let textoDesencriptado = '';
     for (let i = 0; i < textoADesencriptar.length; i++) {
-        textoDesencriptado += String.fromCharCode(parseInt(textoADesencriptar[i], 2).toString(10));
+        textoDesencriptado += String.fromCharCode(textoADesencriptar.charCodeAt(i)-1); // resta 1 al codigo ascii del caracter y lo convierte a caracter
     }
     console.log(textoDesencriptado);
     return textoDesencriptado;
 }
 
-// Funcion que copia el texto encriptado
-btnCopiar.addEventListener('click', () => {
-    resultado.select();
-    document.execCommand('copy');
-    alert('Texto copiado');
+// Funcion que copia el texto desencriptado al portapapeles
+function copiarAlPortapapeles(texto) {
+    navigator.clipboard.writeText(texto);
 }
-);
 
 // Funcion que muestra el textto desencriptado en el output de la pagina html
  function mostrarDesencriptado(textoADesencriptar) {
     resultado.textContent = desencriptar(textoADesencriptar);
 }
-
