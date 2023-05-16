@@ -7,6 +7,7 @@ const divResultado = document.getElementById('divResultado');
 const containerResult = document.getElementById('containerResult');
 
 
+
 // guardar el texto dado por el usuario en una variable global
 let textoAEncriptar = textoParaEncriptar.value;
 
@@ -26,7 +27,7 @@ btnDesencriptar.addEventListener('click', () => {
 //funcionalidad del boton copiar donde se copia el texto desencriptado al portapapeles
 btnCopiar.addEventListener('click', () => {
     let texto = resultado.textContent;
-    copiarAlPortapapeles(texto);
+    copiarAlPortapapeles(resultado.value);
 });
 
 
@@ -53,9 +54,16 @@ function desencriptar(textoADesencriptar) {
 }
 
 // Funcion que copia el texto desencriptado al portapapeles
-function copiarAlPortapapeles(texto) {
-    navigator.clipboard.writeText(texto);
-}
+function copiarAlPortapapeles(textoCopiado) {
+    navigator.clipboard.writeText(textoCopiado)
+      .then(function() {
+        alert("Texto copiado al portapapeles: " + textoCopiado);
+      })
+      .catch(function(error) {
+        console.error("Error al copiar al portapapeles: ", error);
+      });
+  }
+  
 
 // Funcion que muestra el textto desencriptado en el output de la pagina html
  function mostrarDesencriptado(textoADesencriptar) {
